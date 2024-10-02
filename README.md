@@ -1,3 +1,3 @@
-# JS fetch exercise 
+# JS exercises
 
-Consume Rest API data exercise 
+Various exercises using js.
