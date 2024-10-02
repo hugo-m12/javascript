@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            color : yellow;
+            font-family: News Cycle, sans-serif;
+            background-image: url("img/swbg.jpg");
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #cardContainer{
+            justify-content: center;
+            display: flex;
+            text-align: center;
+            gap: 30px;
+        }
+
+        #loading{
+            width: auto;
+            height: auto;
+        }
+        
+        .title{
+            font-family: Orbitron, sans-serif;
+            padding: 45px;
+        }
+        </style>
+</head>
+<body>
+    
+    <h1 class="title"> Star Wars Movies</h1>
+    <div id="cardContainer"></div>
+    <img src="https://cdn.dribbble.com/users/511070/screenshots/2051472/media/2761996d61dd865416e450916037a11d.gif" id="loading"></img>
+    
+    <script>
+        
+        // Bonus: colocar o numero do episodio em numeracao romana
+        // Bonus 2: separar visualmente os paragrafos do crawl (usando a tag <br>)
+
+        const loading = document.querySelector("#loading");
+
+    function createFilmCards(films) {
+        for (let i = 0; i < films.length; i++) {
+            const title = films[i].title;
+            const openingCrawl = films[i].opening_crawl;
+            const episodeNumber = films[i].episode_id;
+
+            loading.style.display = "none";
+
+    function convertToRoman(num) {
+    const romanNumerals = [
+        { value: 6, symbol: 'VI' },
+        { value: 5, symbol: 'V' },
+        { value: 4, symbol: 'IV' },
+        { value: 3, symbol: 'III' },
+        { value: 2, symbol: 'II' },
+        { value: 1, symbol: 'I' }
+    ];
+
+    let result = '';
+    for (let i = 0; i < romanNumerals.length; i++) {
+        while (num >= romanNumerals[i].value) {
+            result += romanNumerals[i].symbol;
+            num -= romanNumerals[i].value;
+        }
+    }
+
+    return result;
+}
+        const romanEpisodeNumber = convertToRoman(episodeNumber);
+        console.log(`Episode ${romanEpisodeNumber}`);
+
+            let scrolledtext = openingCrawl.replaceAll(/\n/g , "<br>");
+            cardContainer.innerHTML += `
+            <div>
+                <h2>Star Wars: Episode ${romanEpisodeNumber} <br> ${title} </h2>
+                <p>${scrolledtext}</p>
+                </div> 
+                `;
+                
+            }
+        }
+
+    const cardContainer = document.querySelector("#cardContainer");
+
+    const url = "https://swapi.dev/api/films";
+    fetch(url)
+        .then(function (response) {
+            return response.json();
+        }).then(function (result) {
+            createFilmCards(result.results);
+        }).catch(function (error) {
+            alert("Error! Please try again!")
+        });
+
+</script>
+</body>
+</html>
