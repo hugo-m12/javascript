@@ -18,7 +18,7 @@
                 pokemonList.innerHTML += `<h3 style="text-transform: uppercase; font-size: xx-large;">${body.name}</h3>`;
                 pokemonList.innerHTML += `<li> Weight: ${body.weight} </li>`;
                 pokemonList.innerHTML += `<li> Height: ${body.height} </li>`;
-                pokemonList.innerHTML += `Cry:<input type="button" value="${body.name}" onclick="playMusic()" ${body.cries.legacy} /> `;
+                pokemonList.innerHTML += `Cry:<input type="button" value="▶️" onclick="playMusic()" ${body.cries.legacy} /> `;
                 pokemonList.innerHTML += `<li style="text-transform: capitalize;"> Type: ${body.types[0].type.name} </li>`;
             });
         });
