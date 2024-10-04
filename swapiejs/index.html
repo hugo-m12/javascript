@@ -71,30 +71,28 @@
             loading.style.display = "none";
 
     function convertToRoman(num) {
-    const romanNumerals = [
-        { value: 6, symbol: 'VI' },
-        { value: 5, symbol: 'V' },
-        { value: 4, symbol: 'IV' },
-        { value: 3, symbol: 'III' },
-        { value: 2, symbol: 'II' },
-        { value: 1, symbol: 'I' }
-    ];
+        const romanNumerals = [
+            { value: 6, symbol: 'VI' },
+            { value: 5, symbol: 'V' },
+            { value: 4, symbol: 'IV' },
+            { value: 3, symbol: 'III' },
+            { value: 2, symbol: 'II' },
+            { value: 1, symbol: 'I' }
+        ];
 
-    let result = '';
-    for (let i = 0; i < romanNumerals.length; i++) {
-        while (num >= romanNumerals[i].value) {
-            result += romanNumerals[i].symbol;
-            num -= romanNumerals[i].value;
+        let result = '';
+        for (let i = 0; i < romanNumerals.length; i++) {
+            while (num >= romanNumerals[i].value) {
+                result += romanNumerals[i].symbol;
+                num -= romanNumerals[i].value;
+            }
         }
-    }
 
-    return result;
-}
+        return result;
+    }
         const romanEpisodeNumber = convertToRoman(episodeNumber);
 
-        console.log(`Episode ${romanEpisodeNumber}`);
-
-            let scrolledtext = openingCrawl.replaceAll(/\n/g , "<br>");
+            let scrolledtext = openingCrawl.replaceAll("\n" , "<br>");
             cardContainer.innerHTML += `
             <div>
                 <h2>Star Wars: Episode ${romanEpisodeNumber} <br> ${title} </h2>
